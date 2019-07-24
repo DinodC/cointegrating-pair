@@ -310,7 +310,7 @@ For WordPress
 
 
 ```python
-data.head()[['GDX', 'GLD']]
+data.head()[['GDX']]
 ```
 
 
@@ -339,16 +339,9 @@ data.head()[['GDX', 'GLD']]
     <tr>
       <th></th>
       <th colspan="6" halign="left">GDX</th>
-      <th colspan="6" halign="left">GLD</th>
     </tr>
     <tr>
       <th></th>
-      <th>Open</th>
-      <th>High</th>
-      <th>Low</th>
-      <th>Close</th>
-      <th>Adj Close</th>
-      <th>Volume</th>
       <th>Open</th>
       <th>High</th>
       <th>Low</th>
@@ -358,12 +351,6 @@ data.head()[['GDX', 'GLD']]
     </tr>
     <tr>
       <th>Date</th>
-      <th></th>
-      <th></th>
-      <th></th>
-      <th></th>
-      <th></th>
-      <th></th>
       <th></th>
       <th></th>
       <th></th>
@@ -381,12 +368,6 @@ data.head()[['GDX', 'GLD']]
       <td>13.36</td>
       <td>13.033523</td>
       <td>69121200</td>
-      <td>104.150002</td>
-      <td>104.860001</td>
-      <td>104.139999</td>
-      <td>104.389999</td>
-      <td>104.389999</td>
-      <td>3908100</td>
     </tr>
     <tr>
       <th>2015-08-07</th>
@@ -396,12 +377,6 @@ data.head()[['GDX', 'GLD']]
       <td>13.40</td>
       <td>13.072546</td>
       <td>50618200</td>
-      <td>104.559998</td>
-      <td>105.379997</td>
-      <td>104.550003</td>
-      <td>104.650002</td>
-      <td>104.650002</td>
-      <td>4400900</td>
     </tr>
     <tr>
       <th>2015-08-10</th>
@@ -411,12 +386,6 @@ data.head()[['GDX', 'GLD']]
       <td>14.27</td>
       <td>13.921287</td>
       <td>91376800</td>
-      <td>105.029999</td>
-      <td>106.269997</td>
-      <td>104.919998</td>
-      <td>105.720001</td>
-      <td>105.720001</td>
-      <td>5892600</td>
     </tr>
     <tr>
       <th>2015-08-11</th>
@@ -426,12 +395,6 @@ data.head()[['GDX', 'GLD']]
       <td>14.53</td>
       <td>14.174931</td>
       <td>53731900</td>
-      <td>106.489998</td>
-      <td>106.629997</td>
-      <td>105.769997</td>
-      <td>106.260002</td>
-      <td>106.260002</td>
-      <td>4060900</td>
     </tr>
     <tr>
       <th>2015-08-12</th>
@@ -441,12 +404,6 @@ data.head()[['GDX', 'GLD']]
       <td>15.52</td>
       <td>15.140740</td>
       <td>123217200</td>
-      <td>106.989998</td>
-      <td>107.910004</td>
-      <td>106.930000</td>
-      <td>107.750000</td>
-      <td>107.750000</td>
-      <td>10022500</td>
     </tr>
   </tbody>
 </table>
@@ -671,7 +628,7 @@ For WordPress
 
 
 ```python
-data.tail()[['GDX', 'GLD']]
+data.tail()[['GDX']]
 ```
 
 
@@ -700,16 +657,9 @@ data.tail()[['GDX', 'GLD']]
     <tr>
       <th></th>
       <th colspan="6" halign="left">GDX</th>
-      <th colspan="6" halign="left">GLD</th>
     </tr>
     <tr>
       <th></th>
-      <th>Open</th>
-      <th>High</th>
-      <th>Low</th>
-      <th>Close</th>
-      <th>Adj Close</th>
-      <th>Volume</th>
       <th>Open</th>
       <th>High</th>
       <th>Low</th>
@@ -719,12 +669,6 @@ data.tail()[['GDX', 'GLD']]
     </tr>
     <tr>
       <th>Date</th>
-      <th></th>
-      <th></th>
-      <th></th>
-      <th></th>
-      <th></th>
-      <th></th>
       <th></th>
       <th></th>
       <th></th>
@@ -742,12 +686,6 @@ data.tail()[['GDX', 'GLD']]
       <td>25.420000</td>
       <td>25.420000</td>
       <td>40606100</td>
-      <td>132.179993</td>
-      <td>132.339996</td>
-      <td>131.279999</td>
-      <td>131.289993</td>
-      <td>131.289993</td>
-      <td>8028900</td>
     </tr>
     <tr>
       <th>2019-07-09</th>
@@ -757,12 +695,6 @@ data.tail()[['GDX', 'GLD']]
       <td>25.650000</td>
       <td>25.650000</td>
       <td>37529700</td>
-      <td>131.429993</td>
-      <td>132.100006</td>
-      <td>131.160004</td>
-      <td>131.750000</td>
-      <td>131.750000</td>
-      <td>6633400</td>
     </tr>
     <tr>
       <th>2019-07-10</th>
@@ -772,12 +704,6 @@ data.tail()[['GDX', 'GLD']]
       <td>26.200001</td>
       <td>26.200001</td>
       <td>56454300</td>
-      <td>132.940002</td>
-      <td>133.869995</td>
-      <td>132.350006</td>
-      <td>133.830002</td>
-      <td>133.830002</td>
-      <td>13920600</td>
     </tr>
     <tr>
       <th>2019-07-11</th>
@@ -787,12 +713,6 @@ data.tail()[['GDX', 'GLD']]
       <td>25.940001</td>
       <td>25.940001</td>
       <td>54013400</td>
-      <td>133.580002</td>
-      <td>133.699997</td>
-      <td>132.410004</td>
-      <td>132.699997</td>
-      <td>132.699997</td>
-      <td>7535100</td>
     </tr>
     <tr>
       <th>2019-07-12</th>
@@ -802,12 +722,6 @@ data.tail()[['GDX', 'GLD']]
       <td>26.209999</td>
       <td>26.209999</td>
       <td>31795200</td>
-      <td>132.889999</td>
-      <td>133.690002</td>
-      <td>132.529999</td>
-      <td>133.529999</td>
-      <td>133.529999</td>
-      <td>6308600</td>
     </tr>
   </tbody>
 </table>
