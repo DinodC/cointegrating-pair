@@ -4,7 +4,7 @@
 ## Introduction
 A time series is considered stationary if its probability distribution does not change over time.
 If the price series of a security is stationary, then it would be a suitable candidate for a mean-reversion trading strategy.
-However, most security price series are not stationary: they seem to follow a lognormal random walk; and drift farther and farther away from the initial value. 
+However, most security price series are not stationary: they seem to follow a lognormal random walk; and drift farther and farther away from the initial value.
 
 We need to find a pair of securities such that the combination of the two is stationary, e.g. buying a security and shorting another.
 Two securities that form a stationary or cointegrating pair are often from the same industry group such as Coca-Cola Company and PepsiCo.
@@ -16,6 +16,8 @@ We will proceed as follows:
 2. Prepare The Data: We pull and process securities' open-high-low-close-volume (OHLCV) data.
 3. Calculate The Spread: We apply the ordinary least squares (OLS) method to calculate the spread between two securities.
 4. Check For Cointegration: We use the augmented Dickey-Fuller test to check if two securities form a stationary or cointegrating pair.
+
+You can find the code on https://github.com/DinodC/cointegrating-pair.
 
 ## Determine The Pairs
 Below are the pairs of securities which we will check for cointegration:
@@ -29,7 +31,7 @@ Gold-themed exchange traded funds (ETF):
 Companies serving fast food:
 - McDonald's Corporation (MCD): Fast food company which gave the whole world classics like *Big Mac*, *Hot Fudge Sundae*, and *Happy Meal*.
 - YUM! Brands, Inc. (YUM): Fast food company which operates Taco Bell, KFC and Pizza Hut.
-    
+
 ### 3. Cryptocurrencies
 Digital currencies:
 - Bitcoin USD (BTC-USD): A decentralized cryptocurrency that can be sent from user to user on the peer-to-peer bitcoin network established in 2009.
@@ -74,16 +76,16 @@ df_list = []
 
 # Load DataFrames
 for i in tickers:
-    
+
     # Load data
     df = pd.read_csv(i + '.csv', index_col=0, parse_dates=True)    
-    
+
     # Set multi-level columns
     df.columns = pd.MultiIndex.from_product([[i], ['Open', 'High', 'Low', 'Close', 'Adj Close', 'Volume']])
-    
+
     # Update list
     df_list.append(df)
-    
+
 # Merge DataFrames
 data = pd.concat(df_list, axis=1, join='inner')
 
@@ -739,7 +741,7 @@ close_dict = {}
 # Update dictionary
 for i in tickers:
     close_dict[i] = data[i]['Adj Close']
-    
+
 # Create DataFrame
 close = pd.DataFrame(close_dict)
 ```
@@ -1155,14 +1157,14 @@ for i in range(no_pairs):
     plt.plot(training[tickers[2*i]], color=color)
     ax1.set_ylabel('Adjusted Close Price of ' + tickers[2*i], color=color)
     ax1.tick_params(labelcolor=color)
-    
-    # Secondary axis 
+
+    # Secondary axis
     color = 'tab:orange'
     ax2 = ax1.twinx()
     plt.plot(training[tickers[2*i+1]], color=color)
     ax2.set_ylabel('Adjusted Close Price of ' + tickers[2*i+1], color=color)
     ax2.tick_params(labelcolor=color)
-    
+
     # Both axis
     plt.xlim([training.index[0], training.index[-1]])
     plt.title('Adjusted Close Prices of ' + tickers[2*i] + ' and ' + tickers[2*i+1])
@@ -1191,17 +1193,17 @@ for i in range(no_pairs):
     # Calculate the hedge ratio
     results = model.fit()
     hedge_ratio = results.params[0]
-    
+
     # Calculate the spread
     spread = training[tickers[2*i]] - hedge_ratio * training[tickers[2*i+1]]
-    
+
     # Mean and standard deviation of the spread
     spread_mean = spread.mean()
     spread_std = spread.std()
-    
+
     # Standardize the spread
     z_score = (spread - spread_mean) / spread_std
-    
+
     # Update the spread list
     spread_list.append(z_score)
 ```
@@ -1238,10 +1240,10 @@ Run cointegration check using augmented Dickey-Fuller test
 stats_list = []
 
 for i in range(len(spread_list)):
-    
+
     # ADF test
     stats = adfuller(spread_list[i])
-    
+
     # Update stats
     stats_list.append(stats)
 ```
@@ -1266,7 +1268,7 @@ Create stats DataFrame
 stats_dict = {}
 
 for i in range(no_pairs):
-    
+
     # Update dict
     stats_dict[pairs[i]] = [stats_list[i][0],
                             stats_list[i][1],
@@ -1348,7 +1350,7 @@ stats_df
 
 
 Remarks:
-1. For the spread between GDX and GLD, the ADF statistic is -3.39 which is lower than the 1% critical value -3.45, which means that there is a better than 99% probability that the **spread between GDX and GLD is stationary**. 
+1. For the spread between GDX and GLD, the ADF statistic is -3.39 which is lower than the 1% critical value -3.45, which means that there is a better than 99% probability that the **spread between GDX and GLD is stationary**.
 2. For the spread between MCD and YUM, the ADF statistic is -3.07 is between the 1% critical value -3.45 and 5% critical value of -2.87, which means that there is a better than 95% probability that the **spread between MCD and YUM is stationary**.
 3. For the spread between BTC-USD and ETH-USD, the ADF statistic is -2.16 which is higher than the critical values, which means that the **spread between BTC-USD and ETH-USD is not stationary**.
 
